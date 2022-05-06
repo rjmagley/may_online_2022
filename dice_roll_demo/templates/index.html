@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>dice!</h1>
+    <p>choose ur fate.............. !</p>
+    <form action='/roll_dice' method='POST'>
+        <select name='dice_selector'>
+            <option value='6'>Six sides!</option>
+            <option value='8'>Eight sides!</option>
+            <option value='13'>Thirteen sides!</option>
+            <option value='20'>Twenty sides!</option>
+            <option value='1000000000'>One billion sides!</option>
+        </select>
+        <input type='submit'>
+    </form>
+    <h2>results</h2>
+    <p>6: {% if session['sides_6']|count != 0 %}{% for x in session['sides_6'] %} {{x}} {% endfor %}{% else %} ... {% endif %}</p>
+    <p>8: {% if session['sides_8']|count != 0 %}{{session['sides_8']}}{% else %} ... {% endif %}</p>
+    <p>13: {% if session['sides_13']|count != 0 %}{{session['sides_13']}}{% else %} ... {% endif %}</p>
+    <p>20: {% if session['sides_20']|count != 0 %}{{session['sides_20']}}{% else %} ... {% endif %}</p>
+    <p>1000000000: {% if session['sides_1000000000']|count != 0 %}{{session['sides_1000000000']}}{% else %} ... {% endif %}</p>
+    <a href='/reset_dice'>reset the hands of fate</a>
+</body>
+</html>
